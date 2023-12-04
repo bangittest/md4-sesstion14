@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <th:block th:insert="admin/layouts/header.html"></th:block>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+
+    <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Blank page
+                <small>it all starts here</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Examples</a></li>
+                <li class="active">Blank page</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <form th:action="@{/admin/add-category}" th:object="${category}" method="post">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên Danh mục</label>
+                        <input type="text" th:field="*{categoryName}" class="form-control" id="exampleInputEmail1" placeholder="Name">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Chọn trạng thái</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" th:field="*{categoryStatus}" value="1">
+                                Hiện
+                            </label>
+                            <label>
+                                <input type="radio" th:field="*{categoryStatus}"  value="0">
+                                Ẩn
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                </div>
+            </form>
+
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <th:block th:insert="admin/layouts/footer.html"></th:block>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+
+<th:block th:insert="admin/layouts/jquery.html"></th:block>
+</body>
+</html>

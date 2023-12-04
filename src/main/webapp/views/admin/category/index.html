@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <th:block th:insert="admin/layouts/header.html"></th:block>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+
+  <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Blank page
+        <small>it all starts here</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
+      </ol>
+    </section>
+    <a th:href="@{/admin/add-category}">Them moi danh muc</a>
+    <!-- Main content -->
+    <section class="content">
+      <table class="table table-hover">
+        <tbody><tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Trang thai</th>
+          <th>Tùy chọn</th>
+        </tr>
+
+        <tr th:each="item :${categoryList}">
+          <td th:text="${item.categoryId}"></td>
+          <td th:text="${item.categoryName}"></td>
+          <td ><span class="label " th:classappend="${item.categoryStatus?'label-success':'label-danger'}" th:text="${item.categoryStatus?'đang hoạt động':'đang ẩn'}"></span></td>
+          <td>
+            <a th:href="@{/admin/category-edit/{id}(id=${item.categoryId})}" class="btn btn-success">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Sửa</font>
+              </font>
+            </a>
+            <a th:href="@{/admin/category-change/{id}(id=${item.categoryId})}" class="btn " th:classappend="${item.categoryStatus?'label-danger':'label-success'}">
+              <font  style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;"  th:text="${item.categoryStatus?'Blok':'UnBlock'}"></font>
+              </font>
+            </a>
+
+          </td>
+        </tr>
+        </tbody></table>
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <th:block th:insert="admin/layouts/footer.html"></th:block>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+
+<th:block th:insert="admin/layouts/jquery.html"></th:block>
+</body>
+</html>
