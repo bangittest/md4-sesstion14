@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -44,6 +45,13 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         thymeleafViewResolver.setCharacterEncoding("UTF-8");
         return thymeleafViewResolver;
     }
+    //cau hinh upload file
+    @Bean
+    CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(52428800);
+        return multipartResolver;
+    }
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext=applicationContext;
@@ -51,7 +59,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**","/fonts/**","/images/**","/js/**")
-                .addResourceLocations("classpath:assets/css/", "classpath:assets/fonts/", "classpath:assets/images/", "classpath:assets/js/");
+        registry.addResourceHandler("/css/**","/fonts/**","/images/**","/js/**","/uploads/**")
+                .addResourceLocations("/uploads/","classpath:assets/css/", "classpath:assets/fonts/", "classpath:assets/images/", "classpath:assets/js/");
     }
 }

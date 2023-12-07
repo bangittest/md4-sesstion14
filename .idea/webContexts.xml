@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/admin/layouts/header.html" value="file://$PROJECT_DIR$/src/main/webapp/views/admin/layouts" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/form-upload.html" value="file://$PROJECT_DIR$/src/main/webapp/views" />
       </map>
     </option>
   </component>

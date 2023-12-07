@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -35,10 +35,13 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Dropdown</a>
+                   aria-expanded="false"><span th:text="${session.user!=null?session.user.firstName:'khach'}"></span></a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Action 1</a>
-                    <a class="dropdown-item" href="#">Action 2</a>
+                   <span th:if="${session.user==null}">
+                        <a class="dropdown-item" th:href="@{/login}">Login</a>
+                    <a class="dropdown-item" th:href="@{/register}">Register</a>
+                   </span>
+                    <a th:unless="${session.user==null}" class="dropdown-item" th:href="@{/logout}">LogOut</a>
                 </div>
             </li>
         </ul>
